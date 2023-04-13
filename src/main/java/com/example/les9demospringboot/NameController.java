@@ -16,6 +16,8 @@ public class NameController {
 
     @GetMapping ("/show")
     public String showNames(){
+
+        // beter stringbuilder doen - is de nette manier
         String helloNames = "";
 
         for (int i = 0; i < names.size(); i++) {
@@ -23,32 +25,59 @@ public class NameController {
         }
         return helloNames;
     }
+
+    // stringbuilder optie:
+//    ArrayList @GetMapping("/show")
+//    public String getNames() {
+//        StringBuilder sb = new StringBuilder("hello");
+//        for (String name : names) { sb.append(" ");
+//            sb.append(name);
+//        }
+//        return sb.toString(); }
+
+    // kan ook door de reverse method van de string builder
+
     @GetMapping ("/showreversed")
     public String showReversedNames(){
-        String backwardsNames = "";
+        String reversedNames = "";
+        // for each loop gebruiken bij beide for loops
         for (int i = 0; i < names.size(); i++) {
             char chRN[] = names.get(i).toCharArray();
             String reversedName = "";
             for (int j = chRN.length-1; j >= 0; j--) {
                 reversedName += chRN[j];
             }
-            backwardsNames += reversedName + " ";
+            reversedNames += reversedName + " ";
         }
-        return backwardsNames;
+        return reversedNames;
     }
 
 
 
+
+
+    // kan ook door de arraylist in een hashset te doen - dan krijg je ook geen dubbele namen
     @PostMapping ("/add")
     public void addName(@RequestParam String name){
         boolean canAdd = true;
         for (int i = 0; i < names.size(); i++) {
-            if (names.get(i).equals(name)){
+            if (names.get(i).equalsIgnoreCase(name)){
                 canAdd = false;
+                // break toevoegen zodat de forloop stopt zodra de naam bestaat.
+                break;
             }
         }
         if (canAdd) {
             this.names.add(name);
         }
     }
+
+    //of:
+//    @PostMapping ("/add")
+//    public void addName(@RequestParam String name){
+//    {
+//        if (!names.contains(name)) {
+//            names.add(name);
+//        }
+//    }
 }
