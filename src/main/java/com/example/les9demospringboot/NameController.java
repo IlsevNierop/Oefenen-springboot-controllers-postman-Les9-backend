@@ -40,7 +40,7 @@ public class NameController {
     @GetMapping ("/showreversed")
     public String showReversedNames(){
         String reversedNames = "";
-        // for each loop gebruiken bij beide for loops
+        // for each loop gebruiken bij beide for loops (bij tweede loopm moet je dan de karakters aan de voorkant eraan plakken)
         for (int i = 0; i < names.size(); i++) {
             char chRN[] = names.get(i).toCharArray();
             String reversedName = "";
