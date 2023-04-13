@@ -30,7 +30,7 @@ public class NameController {
         for (int i = 0; i < names.size(); i++) {
             char chRN[] = names.get(i).toCharArray();
             String reversedName = "";
-            for (int j = chRN.length-1; j > -1; j--) {
+            for (int j = chRN.length-1; j >= 0; j--) {
                 reversedName += chRN[j];
             }
             backwardsNames += reversedName + " ";
