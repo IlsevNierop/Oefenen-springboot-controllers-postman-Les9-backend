@@ -12,7 +12,6 @@ import java.util.List;
 
 @RestController
 public class NameController {
-//    public static List<String> names = Arrays.asList("Ilse", "Kees", "Pietje", "Jacqueline", "Patricia", "Linda");
     public static ArrayList<String> names = new ArrayList<>(Arrays.asList("Ilse", "Kees", "Pietje", "Jacqueline", "Patricia", "Linda"));
 
     @GetMapping ("/show")
@@ -20,7 +19,7 @@ public class NameController {
         String helloNames = "";
 
         for (int i = 0; i < names.size(); i++) {
-            helloNames += "Hello " + names.get(i) + " \n";
+            helloNames += "Hello " + names.get(i) + "\n";
         }
         return helloNames;
     }
